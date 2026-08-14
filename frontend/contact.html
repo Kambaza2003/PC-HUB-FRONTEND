@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | PC HUB</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+    <!-- HEADER -->
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
+        <nav class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+
+            <!-- Logo -->
+            <div class="justify-self-start">
+                <a href="index.html" class="text-2xl font-bold text-cyan-400">
+                    PC HUB
+                </a>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="flex items-center justify-center gap-6">
+                <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
+                <a href="products.html" class="hover:text-cyan-400 transition">Products</a>
+                <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+                <a href="contact.html" class="hover:text-cyan-400 transition">Contact</a>
+            </div>
+
+            <!-- Authentication Navigation -->
+            <div id="authLinks" class="flex items-center justify-end gap-5">
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="pt-32 pb-16 px-6">
+
+        <section class="max-w-5xl mx-auto">
+
+            <!-- HEADING -->
+
+            <div class="text-center mb-12">
+
+                <p class="text-cyan-400 font-semibold uppercase tracking-wider mb-3">
+
+                    Contact PC HUB
+
+                </p>
+
+                <h1 class="text-4xl md:text-5xl font-bold mb-5">
+
+                    Get In Touch
+
+                </h1>
+
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+
+                    Have a question about a product,
+                    your order or your shopping
+                    experience? Get in touch with us.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+
+                    <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+
+                        Contact Information
+
+                    </h2>
+
+
+                    <div class="space-y-6">
+
+                        <div>
+
+                            <p class="text-sm text-slate-500 mb-1">
+
+                                Email
+
+                            </p>
+
+                            <p class="text-slate-300">
+
+                                support@pchub.com
+
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-sm text-slate-500 mb-1">
+
+                                Phone
+
+                            </p>
+
+                            <p class="text-slate-300">
+
+                                +234 906 691 1202
+
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-sm text-slate-500 mb-1">
+
+                                Address
+
+                            </p>
+
+                            <p class="text-slate-300">
+
+                                PC HUB Technology Store
+
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-sm text-slate-500 mb-1">
+
+                                Working Hours
+
+                            </p>
+
+                            <p class="text-slate-300">
+
+                                Monday - Saturday
+
+                                <br>
+
+                                9:00 AM - 6:00 PM
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+
+                    <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+
+                        Send Us a Message
+
+                    </h2>
+
+
+                    <form class="space-y-5">
+
+                        <div>
+
+                            <label
+                                for="name"
+                                class="block text-sm text-slate-400 mb-2">
+
+                                Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Your name"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none">
+
+                        </div>
+
+
+                        <div>
+
+                            <label
+                                for="email"
+                                class="block text-sm text-slate-400 mb-2">
+
+                                Email
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Your email"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none">
+
+                        </div>
+
+
+                        <div>
+
+                            <label
+                                for="message"
+                                class="block text-sm text-slate-400 mb-2">
+
+                                Message
+
+                            </label>
+
+                            <textarea
+                                id="message"
+                                rows="5"
+                                placeholder="Your message"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none"></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="w-full py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/navbar.js"></script>
+
+</body>
+
+</html>

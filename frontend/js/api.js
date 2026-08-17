@@ -1,10 +1,8 @@
 const API_BASE_URL = "http://localhost:7000";
 
-
 const getToken = () => {
     return localStorage.getItem("token");
 };
-
 
 const apiRequest = async (endpoint, options = {}) => {
 

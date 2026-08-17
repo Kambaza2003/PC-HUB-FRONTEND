@@ -19,7 +19,7 @@ if (authLinks) {
             </a>
 
             <button id="logoutButton"
-                    class="hover:text-red-400 transition">
+                    class="text-red-400 hover:text-red-600 transition">
                 Logout
             </button>
         `;

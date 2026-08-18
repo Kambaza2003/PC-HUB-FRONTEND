@@ -52,15 +52,11 @@ if (registerForm) {
             message.textContent =
                 data.message || "Registration successful.";
 
-            localStorage.setItem(
-                "token",
-                data.token
-            );
-
-            window.location.href = "login.html";
-
-    return;    
             registerForm.reset();
+
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1000);
 
         } catch (error) {
 
@@ -76,6 +72,7 @@ if (registerForm) {
     });
 
 }
+
 
 const loginForm = document.getElementById("loginForm");
 
@@ -126,22 +123,52 @@ if (loginForm) {
             /*
              * Save the JWT token.
              */
+
             localStorage.setItem(
                 "token",
                 data.token
             );
 
-            window.location.href = "index.html";
 
-            return;
+            /*
+             * Get the redirect location
+             * from the login URL.
+             */
 
-            message.classList.remove("text-red-400");
-            message.classList.add("text-green-400");
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
 
-            message.textContent =
-                data.message || "Login successful.";
 
-            loginForm.reset();
+            const requestedRedirect =
+                params.get("redirect");
+
+
+            /*
+             * Only allow known PC HUB
+             * destinations.
+             */
+
+            const allowedRedirects = [
+                "index.html",
+                "admin.html"
+            ];
+
+
+            const redirect =
+                allowedRedirects.includes(
+                    requestedRedirect
+                )
+                    ? requestedRedirect
+                    : "index.html";
+
+
+            /*
+             * Redirect after successful login.
+             */
+
+            window.location.href = redirect;
 
         } catch (error) {
 
@@ -158,13 +185,21 @@ if (loginForm) {
 
 }
 
+
 const requireAuth = () => {
-    const token = localStorage.getItem("token");
+
+    const token =
+        localStorage.getItem("token");
+
 
     if (!token) {
-        window.location.href = "login.html";
+
+        window.location.href =
+            "login.html";
+
         return false;
     }
+
 
     return true;
 };

@@ -95,56 +95,28 @@
 
     <!-- LEFT ADMIN MENU -->
 
-    <aside
-        id="adminMenu"
-        class="fixed top-0 left-0 z-[60]
-               h-screen w-80
-               bg-slate-900
-               border-r border-slate-800
-               transform -translate-x-full
-               transition-transform duration-300
-               flex flex-col shadow-2xl">
-
+    <aside id="adminMenu"
+        class="fixed top-0 left-0 z-[60] h-screen w-80 bg-slate-900 border-r border-slate-800 transform -translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
 
         <!-- MENU HEADER -->
 
-        <div
-            class="flex items-center justify-between
-                   px-6 py-5
-                   border-b border-slate-800">
+        <div class="flex items-center justify-between px-6 py-5 border-b border-slate-800">
 
-            <div>
+            <div class="flex items-center gap-3">
 
-                <p
-                    class="text-xs uppercase
-                           tracking-widest
-                           text-cyan-400
-                           font-semibold">
+                <img src="img/PC_HUB_logo.png"
+                    alt="PC HUB logo"
+                    class="w-24 h-auto">
 
-                    PC HUB
-
-                </p>
-
-                <h2
-                    class="text-xl font-bold mt-1">
-
+                <h2 class="text-xl font-bold">
                     Admin Menu
-
                 </h2>
 
             </div>
 
 
-            <button
-                id="closeMenuBtn"
-                class="w-9 h-9
-                       flex items-center
-                       justify-center
-                       rounded-lg
-                       text-slate-400
-                       hover:text-white
-                       hover:bg-slate-800
-                       transition text-xl"
+            <button id="closeMenuBtn"
+                class="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition text-xl"
                 aria-label="Close admin menu">
 
                 ✕
@@ -154,24 +126,15 @@
         </div>
 
 
-
         <!-- MENU ITEMS -->
 
-        <div
-            class="flex flex-col gap-2
-                   p-5 overflow-y-auto">
-
+        <div class="flex flex-col gap-2 p-5 overflow-y-auto">
 
             <!-- DASHBOARD -->
 
             <a
                 href="admin.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>▣</span>
 
@@ -179,17 +142,21 @@
 
             </a>
 
+            <!-- CATEGORIES -->
+
+            <a href="admin-categories.html" 
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>▦</span>
+
+                <span>Manage Categories</span>
+            </a>
 
             <!-- PRODUCTS -->
 
             <a
                 href="admin-products.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>▤</span>
 
@@ -202,12 +169,7 @@
 
             <a
                 href="admin-orders.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>□</span>
 
@@ -220,12 +182,7 @@
 
             <a
                 href="admin-users.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>♙</span>
 
@@ -238,10 +195,7 @@
 
             <a
                 href="admin-payments.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       bg-cyan-500/10
-                       text-cyan-400">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg bg-cyan-500/10 text-cyan-400">
 
                 <span>₦</span>
 
@@ -250,16 +204,11 @@
             </a>
 
 
-            <!-- CONTENT -->
+            <!-- PAGE CONTENT -->
 
             <a
                 href="admin-content.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>✎</span>
 
@@ -274,18 +223,14 @@
         <!-- MENU FOOTER -->
 
         <div
-            class="mt-auto p-5
-                   border-t border-slate-800">
+            class="mt-auto p-5 border-t border-slate-800">
 
+
+            <!-- VIEW WEBSITE -->
 
             <a
                 href="index.html"
-                class="flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-slate-300
-                       hover:bg-slate-800
-                       hover:text-cyan-400
-                       transition mb-2">
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition mb-2">
 
                 <span>↗</span>
 
@@ -294,14 +239,11 @@
             </a>
 
 
+            <!-- LOGOUT -->
+
             <button
                 id="logoutBtn"
-                class="w-full
-                       flex items-center gap-3
-                       px-4 py-3 rounded-lg
-                       text-red-400
-                       hover:bg-red-500/10
-                       transition text-left">
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition text-left">
 
                 <span>↪</span>
 

@@ -120,6 +120,7 @@ if (loginForm) {
                 return;
             }
 
+
             /*
              * Save the JWT token.
              */
@@ -131,44 +132,34 @@ if (loginForm) {
 
 
             /*
-             * Get the redirect location
-             * from the login URL.
+             * Get the user's role from
+             * the JWT payload.
              */
 
-            const params =
-                new URLSearchParams(
-                    window.location.search
+            const tokenParts =
+                data.token.split(".");
+
+            const payload =
+                JSON.parse(
+                    atob(tokenParts[1])
                 );
 
 
-            const requestedRedirect =
-                params.get("redirect");
-
-
             /*
-             * Only allow known PC HUB
-             * destinations.
+             * Redirect based on user role.
              */
 
-            const allowedRedirects = [
-                "index.html",
-                "admin.html"
-            ];
+            if (payload.role === "admin") {
 
+                window.location.href =
+                    "admin.html";
 
-            const redirect =
-                allowedRedirects.includes(
-                    requestedRedirect
-                )
-                    ? requestedRedirect
-                    : "index.html";
+            } else {
 
+                window.location.href =
+                    "index.html";
 
-            /*
-             * Redirect after successful login.
-             */
-
-            window.location.href = redirect;
+            }
 
         } catch (error) {
 

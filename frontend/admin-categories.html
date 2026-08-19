@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Categories | PC HUB</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+    <!-- SIDEBAR -->
+
+    <aside id="adminMenu"
+        class="fixed top-0 left-0 z-[60] h-screen w-80 bg-slate-900 border-r border-slate-800 transform -translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+
+        <!-- MENU HEADER -->
+
+        <div class="flex items-center justify-between px-6 py-5 border-b border-slate-800">
+
+            <div class="flex items-center gap-3">
+
+                <img src="img/PC_HUB_logo.png"
+                    alt="PC HUB logo"
+                    class="w-24 h-auto">
+
+                <h2 class="text-xl font-bold">
+                    Admin Menu
+                </h2>
+
+            </div>
+
+
+            <button id="closeMenuBtn"
+                class="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition text-xl"
+                aria-label="Close admin menu">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <!-- MENU ITEMS -->
+
+        <div class="flex flex-col gap-2 p-5 overflow-y-auto">
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="admin.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>▣</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+            <!-- CATEGORIES -->
+
+            <a href="admin-categories.html" 
+                class="flex items-center gap-3 px-4 py-3 rounded-lg bg-cyan-500/10 text-cyan-400">
+
+                <span>▦</span>
+
+                <span>Manage Categories</span>
+            </a>
+
+            <!-- PRODUCTS -->
+
+            <a
+                href="admin-products.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>▤</span>
+
+                <span>Manage Products</span>
+
+            </a>
+
+
+            <!-- ORDERS -->
+
+            <a
+                href="admin-orders.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>□</span>
+
+                <span>Manage Orders</span>
+
+            </a>
+
+
+            <!-- USERS -->
+
+            <a
+                href="admin-users.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>♙</span>
+
+                <span>Manage Users</span>
+
+            </a>
+
+
+            <!-- PAYMENTS -->
+
+            <a
+                href="admin-payments.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>₦</span>
+
+                <span>Payments</span>
+
+            </a>
+
+
+            <!-- PAGE CONTENT -->
+
+            <a
+                href="admin-content.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
+
+                <span>✎</span>
+
+                <span>Page Content</span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- MENU FOOTER -->
+
+        <div
+            class="mt-auto p-5 border-t border-slate-800">
+
+
+            <!-- VIEW WEBSITE -->
+
+            <a
+                href="index.html"
+                class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition mb-2">
+
+                <span>↗</span>
+
+                <span>View Website</span>
+
+            </a>
+
+
+            <!-- LOGOUT -->
+
+            <button
+                id="logoutBtn"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition text-left">
+
+                <span>↪</span>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- OVERLAY -->
+
+    <div id="menuOverlay" class="fixed inset-0 z-40 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+
+    <!-- HEADER -->
+
+    <header class="fixed top-0 left-0 right-0 z-30 bg-slate-950/95 backdrop-blur border-b border-slate-800">
+
+        <div class="flex items-center justify-between px-6 py-4">
+
+            <button id="menuBtn" class="text-slate-300 hover:text-cyan-400 text-2xl">
+                ☰
+            </button>
+
+            <div class="flex items-center gap-3">
+
+                <img src="img/PC_HUB_logo.png" alt="PC HUB logo" class="w-28 h-auto">
+
+                <span class="hidden md:block text-slate-500">
+                    Admin Panel
+                </span>
+
+            </div>
+
+            <div class="w-8"></div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="pt-28 px-6 pb-16">
+
+        <section class="max-w-6xl mx-auto">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+
+                <div>
+
+                    <p class="text-cyan-400 font-semibold uppercase tracking-wider mb-2">
+                        Administration
+                    </p>
+
+                    <h1 class="text-3xl md:text-4xl font-bold">
+                        Manage Categories
+                    </h1>
+
+                    <p class="text-slate-400 mt-2">
+                        Create, edit and remove product categories.
+                    </p>
+
+                </div>
+
+
+                <button id="addCategoryBtn" class="px-5 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+                    + Add Category
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div id="categoryMessage" class="hidden mb-6 rounded-lg p-4 border"></div>
+
+
+            <!-- CATEGORY TOTAL -->
+
+            <div class="mb-4 text-sm text-slate-500">
+
+                <span id="categoryTotal">
+                    0 categories
+                </span>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full text-left">
+
+                        <thead class="bg-slate-950 border-b border-slate-800">
+
+                            <tr>
+
+                                <th class="px-6 py-4 text-sm font-semibold text-slate-400">
+                                    ID
+                                </th>
+
+                                <th class="px-6 py-4 text-sm font-semibold text-slate-400">
+                                    Category Name
+                                </th>
+
+                                <th class="px-6 py-4 text-sm font-semibold text-slate-400">
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="categoryTableBody">
+
+                            <tr>
+
+                                <td colspan="3" class="px-6 py-10 text-center text-slate-500">
+                                    Loading categories...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- CATEGORY MODAL -->
+
+    <div id="categoryModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-6">
+
+        <div class="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl">
+
+            <!-- MODAL HEADER -->
+
+            <div class="flex items-center justify-between px-6 py-5 border-b border-slate-800">
+
+                <h2 id="modalMode" class="text-xl font-semibold">
+                    Add Category
+                </h2>
+
+                <button id="closeModalBtn" class="text-slate-400 hover:text-white text-2xl">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="categoryForm" class="p-6">
+
+                <input type="hidden" id="categoryId">
+
+
+                <div class="mb-6">
+
+                    <label for="categoryName" class="block text-sm text-slate-400 mb-2">
+                        Category Name
+                    </label>
+
+                    <input id="categoryName" type="text" placeholder="Enter category name" class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-white focus:border-cyan-400 focus:outline-none" required>
+
+                </div>
+
+
+                <div id="formMessage" class="hidden mb-5 px-4 py-3 rounded-lg text-sm"></div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="flex justify-end gap-3">
+
+                    <button id="cancelBtn" type="button" class="px-5 py-3 rounded-lg border border-slate-700 text-slate-300 hover:bg-slate-800 transition">
+                        Cancel
+                    </button>
+
+                    <button id="saveCategoryBtn" type="submit" class="px-5 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+                        Save Category
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="js/api.js"></script>
+    <script src="js/authGuard.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/admin-categories.js"></script>
+
+</body>
+
+</html>

@@ -21,3 +21,17 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.href = "login.html";
 });
+
+const user = JSON.parse(
+    localStorage.getItem("user")
+);
+
+const adminName =
+    document.getElementById("adminName");
+
+if (adminName && user) {
+
+    adminName.textContent =
+        user.name || "Administrator";
+
+}

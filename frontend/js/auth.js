@@ -130,6 +130,10 @@ if (loginForm) {
                 data.token
             );
 
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
 
             /*
              * Get the user's role from

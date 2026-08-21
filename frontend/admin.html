@@ -191,10 +191,28 @@
 
 
 
-        <!-- MENU FOOTER -->
+       <!-- MENU FOOTER -->
 
-        <div
-            class="mt-auto p-5 border-t border-slate-800">
+        <div class="mt-auto p-5 border-t border-slate-800">
+
+            <!-- ADMIN ACCOUNT -->
+
+            <div class="mb-4 px-4 py-3 rounded-lg bg-slate-950 border border-slate-800">
+
+                <div class="flex items-center gap-2 min-w-0">
+
+                    <span id="adminName"
+                        class="text-cyan-400 font-semibold truncate">
+                        Admin
+                    </span>
+
+                    <span class="text-xs text-red-500 shrink-0">
+                        (Admin)
+                    </span>
+
+                </div>
+
+            </div>
 
 
             <!-- VIEW WEBSITE -->
@@ -223,7 +241,6 @@
             </button>
 
         </div>
-
     </aside>
 
 
@@ -490,7 +507,11 @@
 
                         </div>
 
-                        <span class="text-xs text-slate-500">
+                        <span class="flex items-center gap-2 text-xs text-slate-400">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            </span>
                             Live
                         </span>
 

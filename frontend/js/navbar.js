@@ -3,9 +3,66 @@ const token = localStorage.getItem("token");
 const authLinks =
     document.getElementById("authLinks");
 
+const createAccountButton =
+    document.getElementById("createAccountButton");
+
+
+let user = null;
+
+
+const getValidUser = () => {
+
+    if (!token) {
+        return null;
+    }
+
+    try {
+
+        const tokenParts =
+            token.split(".");
+
+        const payload =
+            JSON.parse(
+                atob(tokenParts[1])
+            );
+
+        const currentTime =
+            Math.floor(Date.now() / 1000);
+
+
+        if (
+            !payload.exp ||
+            payload.exp <= currentTime
+        ) {
+
+            localStorage.removeItem("token");
+
+            return null;
+        }
+
+
+        return payload;
+
+    } catch (error) {
+
+        console.error(
+            "Invalid token:",
+            error
+        );
+
+        localStorage.removeItem("token");
+
+        return null;
+    }
+};
+
+
+user = getValidUser();
+
+
 if (authLinks) {
 
-    if (token) {
+    if (user) {
 
         authLinks.innerHTML = `
             <a href="cart.html"
@@ -18,10 +75,22 @@ if (authLinks) {
                 Orders
             </a>
 
-            <button id="logoutButton"
-                    class="text-red-400 hover:text-red-600 transition">
-                Logout
-            </button>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700">
+
+                <span class="max-w-40 truncate text-cyan-400 font-semibold">
+                    ${user.name}
+                </span>
+
+                <span class="text-slate-700">
+                    |
+                </span>
+
+                <button id="logoutButton"
+                        class="text-red-400 hover:text-red-300 font-medium transition">
+                    Logout
+                </button>
+
+            </div>
         `;
 
 
@@ -37,6 +106,7 @@ if (authLinks) {
 
                 window.location.href =
                     "login.html";
+
             }
         );
 
@@ -54,4 +124,11 @@ if (authLinks) {
             </a>
         `;
     }
+}
+
+
+if (createAccountButton && user) {
+
+    createAccountButton.classList.add("hidden");
+
 }

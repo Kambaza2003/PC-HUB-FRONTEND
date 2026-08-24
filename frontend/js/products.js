@@ -4,17 +4,55 @@ const productsContainer =
 const productsMessage =
     document.getElementById("productsMessage");
 
+const searchButton =
+    document.getElementById("searchButton");
 
-const loadProducts = async () => {
+const searchWrapper =
+    document.getElementById("searchWrapper");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+const minPrice =
+    document.getElementById("minPrice");
+
+const maxPrice =
+    document.getElementById("maxPrice");
+
+const sortFilter =
+    document.getElementById("sortFilter");
+
+const applyFiltersButton =
+    document.getElementById("applyFiltersButton");
+
+const clearFiltersButton =
+    document.getElementById("clearFiltersButton");
+
+
+let searchTimer;
+
+
+/* ================================
+   LOAD PRODUCTS
+================================ */
+
+const loadProducts = async (params = "") => {
 
     try {
 
+        productsMessage.classList.add("hidden");
+
         const { response, data } =
-            await apiRequest("/products");
+            await apiRequest(`/products${params}`);
+
 
         if (!response.ok) {
 
             productsMessage.classList.remove("hidden");
+
             productsMessage.classList.add(
                 "bg-red-500/10",
                 "border",
@@ -50,9 +88,14 @@ const loadProducts = async () => {
 };
 
 
+/* ================================
+   DISPLAY PRODUCTS
+================================ */
+
 const displayProducts = (products) => {
 
     productsContainer.innerHTML = "";
+
 
     if (products.length === 0) {
 
@@ -66,16 +109,20 @@ const displayProducts = (products) => {
         );
 
         productsMessage.textContent =
-            "No products available.";
+            "No products found.";
 
         return;
     }
+
+
+    productsMessage.classList.add("hidden");
 
 
     products.forEach(product => {
 
         const card =
             document.createElement("article");
+
 
         card.className =
             "bg-slate-900 border border-slate-800 " +
@@ -85,7 +132,8 @@ const displayProducts = (products) => {
 
         card.innerHTML = `
 
-            <div class="h-52 bg-slate-800 flex items-center justify-center">
+            <div class="h-52 bg-slate-800
+                        flex items-center justify-center">
 
                 ${
                     product.image
@@ -116,22 +164,34 @@ const displayProducts = (products) => {
 
 
                 <p class="text-slate-400 text-sm mb-4">
-                    ${product.description || "No description available."}
+                    ${
+                        product.description ||
+                        "No description available."
+                    }
                 </p>
 
 
-                <div class="flex items-center justify-between mb-4">
+                <div
+                    class="flex items-center
+                           justify-between
+                           mb-4">
 
-                    <span class="text-cyan-400 text-xl font-bold">
+                    <span
+                        class="text-cyan-400
+                               text-xl
+                               font-bold">
+
                         ₦${Number(product.price).toLocaleString()}
+
                     </span>
 
 
-                    <span class="text-sm ${
-                        product.stock > 0
-                        ? "text-green-400"
-                        : "text-red-400"
-                    }">
+                    <span
+                        class="text-sm ${
+                            product.stock > 0
+                            ? "text-green-400"
+                            : "text-red-400"
+                        }">
 
                         ${
                             product.stock > 0
@@ -145,10 +205,14 @@ const displayProducts = (products) => {
 
 
                 <button
-                    class="add-to-cart w-full py-3 rounded-lg
-                           bg-cyan-500 text-slate-950
+                    class="add-to-cart
+                           w-full py-3
+                           rounded-lg
+                           bg-cyan-500
+                           text-slate-950
                            font-semibold
-                           hover:bg-cyan-400 transition
+                           hover:bg-cyan-400
+                           transition
                            ${
                                product.stock <= 0
                                ? "opacity-50 cursor-not-allowed"
@@ -157,7 +221,11 @@ const displayProducts = (products) => {
 
                     data-product-id="${product.id}"
 
-                    ${product.stock <= 0 ? "disabled" : ""}>
+                    ${
+                        product.stock <= 0
+                        ? "disabled"
+                        : ""
+                    }>
 
                     ${
                         product.stock > 0
@@ -179,59 +247,399 @@ const displayProducts = (products) => {
 };
 
 
-loadProducts();
+/* ================================
+   APPLY SEARCH AND FILTERS
+================================ */
 
-productsContainer.addEventListener("click", async (event) => {
+const applyFilters = () => {
 
-    const button = event.target.closest(".add-to-cart");
+    const params =
+        new URLSearchParams();
 
-    if (!button) {
-        return;
+
+    const search =
+        searchInput.value.trim();
+
+
+    if (search) {
+
+        params.append(
+            "search",
+            search
+        );
+
     }
 
-    const productId = button.dataset.productId;
+
+    const category =
+        categoryFilter.value;
+
+
+    if (category) {
+
+        params.append(
+            "category",
+            category
+        );
+
+    }
+
+
+    const minimumPrice =
+        minPrice.value;
+
+
+    if (minimumPrice) {
+
+        params.append(
+            "minPrice",
+            minimumPrice
+        );
+
+    }
+
+
+    const maximumPrice =
+        maxPrice.value;
+
+
+    if (maximumPrice) {
+
+        params.append(
+            "maxPrice",
+            maximumPrice
+        );
+
+    }
+
+
+    const sort =
+        sortFilter.value;
+
+
+    if (sort) {
+
+        params.append(
+            "sort",
+            sort
+        );
+
+    }
+
+
+    const queryString =
+        params.toString();
+
+
+    loadProducts(
+        queryString
+            ? `?${queryString}`
+            : ""
+    );
+};
+
+
+/* ================================
+   LOAD CATEGORIES
+================================ */
+
+const loadCategories = async () => {
 
     try {
 
-        button.disabled = true;
-        button.textContent = "Adding...";
+        const { response, data } =
+            await apiRequest("/categories");
 
-        const { response, data } = await apiRequest(
-            "/cart",
-            {
-                method: "POST",
-
-                body: JSON.stringify({
-                    product_id: Number(productId),
-                    quantity: 1
-                })
-            }
-        );
 
         if (!response.ok) {
 
-            alert(data.message || "Unable to add product to cart.");
-
-            button.disabled = false;
-            button.textContent = "Add to Cart";
+            console.error(
+                data.message ||
+                "Unable to load categories."
+            );
 
             return;
         }
 
-        button.textContent = "Added ✓";
 
-        setTimeout(() => {
-            button.disabled = false;
-            button.textContent = "Add to Cart";
-        }, 1500);
+        categoryFilter.innerHTML = `
+            <option value="">
+                All Categories
+            </option>
+        `;
+
+
+        data.forEach(category => {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                category.id;
+
+
+            option.textContent =
+                category.name;
+
+
+            categoryFilter.appendChild(
+                option
+            );
+
+        });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Unable to load categories:",
+            error
+        );
 
-        alert("Unable to connect to the server.");
-
-        button.disabled = false;
-        button.textContent = "Add to Cart";
     }
-});
+};
+
+
+/* ================================
+   OPEN / CLOSE SEARCH
+================================ */
+
+searchButton.addEventListener(
+    "click",
+    () => {
+
+        const isOpen =
+            searchWrapper.classList.contains("w-64");
+
+
+        if (isOpen) {
+
+            searchWrapper.classList.remove(
+                "w-64",
+                "opacity-100"
+            );
+
+            searchWrapper.classList.add(
+                "w-0",
+                "opacity-0"
+            );
+
+            searchInput.value = "";
+
+            applyFilters();
+
+        } else {
+
+            searchWrapper.classList.remove(
+                "w-0",
+                "opacity-0"
+            );
+
+            searchWrapper.classList.add(
+                "w-64",
+                "opacity-100"
+            );
+
+            setTimeout(() => {
+                searchInput.focus();
+            }, 300);
+
+        }
+
+    }
+);
+
+
+/* ================================
+   LIVE SEARCH
+================================ */
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        clearTimeout(searchTimer);
+
+
+        searchTimer =
+            setTimeout(() => {
+
+                applyFilters();
+
+            }, 400);
+
+    }
+);
+
+
+/* ================================
+   ENTER SEARCH
+================================ */
+
+searchInput.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            clearTimeout(searchTimer);
+
+            applyFilters();
+
+        }
+
+    }
+);
+
+
+/* ================================
+   APPLY FILTERS BUTTON
+================================ */
+
+applyFiltersButton.addEventListener(
+    "click",
+    () => {
+
+        applyFilters();
+
+    }
+);
+
+
+/* ================================
+   CLEAR FILTERS
+================================ */
+
+clearFiltersButton.addEventListener(
+    "click",
+    () => {
+
+        searchInput.value = "";
+
+        categoryFilter.value = "";
+
+        minPrice.value = "";
+
+        maxPrice.value = "";
+
+        sortFilter.value = "";
+
+
+        loadProducts();
+
+    }
+);
+
+
+/* ================================
+   ADD TO CART
+================================ */
+
+productsContainer.addEventListener(
+    "click",
+    async (event) => {
+
+        const button =
+            event.target.closest(
+                ".add-to-cart"
+            );
+
+
+        if (!button) {
+
+            return;
+
+        }
+
+
+        const productId =
+            button.dataset.productId;
+
+
+        try {
+
+            button.disabled = true;
+
+            button.textContent =
+                "Adding...";
+
+
+            const { response, data } =
+                await apiRequest(
+                    "/cart",
+                    {
+                        method: "POST",
+
+                        body: JSON.stringify({
+                            product_id:
+                                Number(productId),
+
+                            quantity: 1
+                        })
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                alert(
+                    data.message ||
+                    "Unable to add product to cart."
+                );
+
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Add to Cart";
+
+
+                return;
+
+            }
+
+
+            button.textContent =
+                "Added ✓";
+
+
+            setTimeout(() => {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Add to Cart";
+
+            }, 1500);
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            alert(
+                "Unable to connect to the server."
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Add to Cart";
+
+        }
+
+    }
+);
+
+
+/* ================================
+   INITIAL LOAD
+================================ */
+
+loadCategories();
+
+loadProducts();

@@ -45,25 +45,31 @@ const showMessage = (message, type = "error") => {
             "border-red-500/30",
             "text-red-400"
         );
+
     }
 
 
     paymentMessage.textContent = message;
+
 };
 
 
 const getOrderId = () => {
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
     return params.get("orderId");
+
 };
 
 
 const createPayment = async () => {
 
-    const orderId = getOrderId();
+    const orderId =
+        getOrderId();
 
 
     if (!orderId) {
@@ -80,6 +86,7 @@ const createPayment = async () => {
         );
 
         return;
+
     }
 
 
@@ -90,8 +97,8 @@ const createPayment = async () => {
     try {
 
         /*
-         * First get the order so we know
-         * the correct payment amount.
+         * Get the order first so we can
+         * display the correct amount.
          */
 
         const {
@@ -109,7 +116,10 @@ const createPayment = async () => {
                 "Unable to find order."
             );
 
+            payButton.disabled = true;
+
             return;
+
         }
 
 
@@ -123,7 +133,8 @@ const createPayment = async () => {
 
 
         /*
-         * Create the payment.
+         * Create and initialize the
+         * Paystack transaction.
          */
 
         const {
@@ -131,80 +142,6 @@ const createPayment = async () => {
             data
         } = await apiRequest(
             `/payments/${orderId}`,
-            {
-                method: "POST",
-
-                body: JSON.stringify({
-                    amount
-                })
-            }
-        );
-
-
-        if (!response.ok) {
-
-            showMessage(
-                data.message ||
-                "Unable to create payment."
-            );
-
-            return;
-        }
-
-
-        /*
-         * Store payment ID for
-         * the Pay Now button.
-         */
-
-        payButton.dataset.paymentId =
-            data.paymentId;
-
-
-        paymentStatusElement.textContent =
-            "Pending";
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showMessage(
-            "Unable to connect to the server."
-        );
-    }
-};
-
-
-const payPayment = async () => {
-
-    const paymentId =
-        payButton.dataset.paymentId;
-
-
-    if (!paymentId) {
-
-        showMessage(
-            "Payment has not been created yet."
-        );
-
-        return;
-    }
-
-
-    try {
-
-        payButton.disabled = true;
-
-        payButton.textContent =
-            "Processing Payment...";
-
-
-        const {
-            response,
-            data
-        } = await apiRequest(
-            `/payments/${paymentId}/pay`,
             {
                 method: "POST"
             }
@@ -215,44 +152,38 @@ const payPayment = async () => {
 
             showMessage(
                 data.message ||
-                "Payment failed."
+                "Unable to initialize payment."
             );
 
-            payButton.disabled = false;
-
-            payButton.textContent =
-                "Pay Now";
-
             return;
+
         }
 
 
+        /*
+         * Store payment information.
+         */
+
+        payButton.dataset.paymentId =
+            data.paymentId;
+
+        payButton.dataset.reference =
+            data.reference;
+
+        window.paymentAuthorizationUrl =
+            data.authorization_url;
+
+
         paymentStatusElement.textContent =
-            "Successful";
+            "Ready for payment";
 
 
-        paymentStatusElement.className =
-            "px-3 py-1 rounded-full text-sm " +
-            "bg-green-500/10 text-green-400";
+        /*
+         * The actual payment will happen
+         * when the user clicks Pay Now.
+         */
 
-
-        showMessage(
-            "Payment successful!",
-            "success"
-        );
-
-
-        payButton.textContent =
-            "Payment Completed";
-
-
-        setTimeout(() => {
-
-            window.location.href =
-                "orders.html";
-
-        }, 1500);
-
+        payButton.disabled = false;
 
     } catch (error) {
 
@@ -262,11 +193,31 @@ const payPayment = async () => {
             "Unable to connect to the server."
         );
 
-        payButton.disabled = false;
-
-        payButton.textContent =
-            "Pay Now";
     }
+
+};
+
+
+const payPayment = () => {
+
+    const authorizationUrl =
+        window.paymentAuthorizationUrl;
+
+
+    if (!authorizationUrl) {
+
+        showMessage(
+            "Payment has not been initialized."
+        );
+
+        return;
+
+    }
+
+
+    window.location.href =
+        authorizationUrl;
+
 };
 
 

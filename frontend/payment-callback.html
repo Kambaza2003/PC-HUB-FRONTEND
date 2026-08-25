@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Processing | PC HUB</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-950 text-white flex items-center justify-center">
+
+    <main class="w-full max-w-md px-6">
+
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center">
+
+            <div class="mb-6">
+
+                <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-cyan-500/10 flex items-center justify-center">
+
+                    <div class="w-8 h-8 border-4 border-slate-700 border-t-cyan-400 rounded-full animate-spin">
+                    </div>
+
+                </div>
+
+                <h1 class="text-2xl font-bold mb-2">
+                    Processing Payment
+                </h1>
+
+                <p class="text-slate-400">
+                    Please wait while we verify your payment.
+                </p>
+
+            </div>
+
+
+            <div id="paymentMessage"
+                 class="hidden rounded-lg p-4 text-sm">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/payment-callback.js"></script>
+
+</body>
+
+</html>

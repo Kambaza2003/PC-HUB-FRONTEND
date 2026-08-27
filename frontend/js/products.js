@@ -165,8 +165,11 @@ const displayProducts = (products) => {
 
                 <p class="text-slate-400 text-sm mb-4">
                     ${
-                        product.description ||
-                        "No description available."
+                        product.description
+                            ? product.description.length > 100
+                                ? product.description.substring(0, 100) + "..."
+                                : product.description
+                            : "No description available."
                     }
                 </p>
 
@@ -204,36 +207,59 @@ const displayProducts = (products) => {
                 </div>
 
 
-                <button
-                    class="add-to-cart
-                           w-full py-3
-                           rounded-lg
-                           bg-cyan-500
-                           text-slate-950
-                           font-semibold
-                           hover:bg-cyan-400
-                           transition
-                           ${
-                               product.stock <= 0
-                               ? "opacity-50 cursor-not-allowed"
-                               : ""
-                           }"
+                <div class="flex gap-3">
 
-                    data-product-id="${product.id}"
+                    <a
+                        href="singleProduct.html?id=${product.id}"
+                        class="flex-1
+                            text-center
+                            py-3
+                            rounded-lg
+                            border border-slate-700
+                            text-slate-300
+                            font-semibold
+                            hover:border-cyan-400
+                            hover:text-cyan-400
+                            transition">
 
-                    ${
-                        product.stock <= 0
-                        ? "disabled"
-                        : ""
-                    }>
+                        View Product
 
-                    ${
-                        product.stock > 0
-                        ? "Add to Cart"
-                        : "Out of Stock"
-                    }
+                    </a>
 
-                </button>
+
+                    <button
+                        class="add-to-cart
+                            flex-1
+                            py-3
+                            rounded-lg
+                            bg-cyan-500
+                            text-slate-950
+                            font-semibold
+                            hover:bg-cyan-400
+                            transition
+                            ${
+                                product.stock <= 0
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }"
+
+                        data-product-id="${product.id}"
+
+                        ${
+                            product.stock <= 0
+                            ? "disabled"
+                            : ""
+                        }>
+
+                        ${
+                            product.stock > 0
+                            ? "Add to Cart"
+                            : "Out of Stock"
+                        }
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -639,7 +665,6 @@ productsContainer.addEventListener(
 /* ================================
    INITIAL LOAD
 ================================ */
-
 loadCategories();
 
 loadProducts();

@@ -24,6 +24,79 @@ const productTotal = document.getElementById("productTotal");
 const productImage = document.getElementById("productImage");
 const imagePreview = document.getElementById("imagePreview");
 const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+const addImageBtn = document.getElementById("addImageBtn");
+const additionalImagesContainer = document.getElementById("additionalImagesContainer");
+
+/* ================================
+   ADDITIONAL PRODUCT IMAGES
+================================ */
+
+function addAdditionalImageField(value = "") {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "flex items-center gap-3";
+
+
+    const input =
+        document.createElement("input");
+
+    input.type = "text";
+
+    input.placeholder =
+        "Image path or URL";
+
+    input.value =
+        value;
+
+    input.className =
+        "flex-1 px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 " +
+        "focus:outline-none focus:border-cyan-400";
+
+
+    const removeButton =
+        document.createElement("button");
+
+    removeButton.type =
+        "button";
+
+    removeButton.textContent =
+        "Remove";
+
+    removeButton.className =
+        "px-4 py-3 rounded-lg text-sm text-red-400 " +
+        "hover:bg-red-500/10 transition";
+
+
+    removeButton.addEventListener(
+        "click",
+        () => {
+
+            wrapper.remove();
+
+        }
+    );
+
+
+    wrapper.appendChild(input);
+
+    wrapper.appendChild(removeButton);
+
+    additionalImagesContainer.appendChild(wrapper);
+
+}
+
+
+addImageBtn.addEventListener(
+    "click",
+    () => {
+
+        addAdditionalImageField();
+
+    }
+);
 
 productImage.addEventListener("input", () => {
 
@@ -290,8 +363,14 @@ addProductBtn.addEventListener("click", () => {
     document.getElementById("saveProductBtn").textContent = "Save Product";
 
     productForm.reset();
+
     imagePreview.src = "";
-    imagePreviewContainer.classList.add("hidden");
+
+    imagePreviewContainer.classList.add(
+        "hidden"
+    );
+
+    additionalImagesContainer.innerHTML = "";
 
     productModal.classList.remove("hidden");
     productModal.classList.add("flex");
@@ -309,7 +388,12 @@ function closeModal() {
     productForm.reset();
 
     imagePreview.src = "";
-    imagePreviewContainer.classList.add("hidden");
+
+    imagePreviewContainer.classList.add(
+        "hidden"
+    );
+
+    additionalImagesContainer.innerHTML = "";
 
     editingProductId = null;
 }
@@ -320,7 +404,7 @@ cancelBtn.addEventListener("click", closeModal);
 
 /* EDIT PRODUCT */
 
-window.editProduct = function(id) {
+window.editProduct = async function(id) {
 
     const product = products.find(item => item.id === id);
 
@@ -340,6 +424,10 @@ window.editProduct = function(id) {
     document.getElementById("productStock").value = product.stock;
     document.getElementById("productImage").value = product.image || "";
 
+    /* MAIN IMAGE PREVIEW */
+
+    imagePreviewContainer.classList.add("hidden");
+
     if (product.image) {
 
         imagePreview.src = product.image;
@@ -350,7 +438,52 @@ window.editProduct = function(id) {
 
     }
 
-    document.getElementById("productCategory").value = product.category_id || "";
+
+    /* LOAD ADDITIONAL PRODUCT IMAGES */
+
+    additionalImagesContainer.innerHTML = "";
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/products/${id}/images`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const images = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                images.message || "Failed to load product images"
+            );
+        }
+
+
+        images.forEach(image => {
+
+            addAdditionalImageField(image.image);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+
+    /* CATEGORY */
+
+    document.getElementById("productCategory").value =
+        product.category_id || "";
+
+
+    /* OPEN MODAL */
 
     productModal.classList.remove("hidden");
     productModal.classList.add("flex");
@@ -364,22 +497,31 @@ productForm.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
-    const productData = {
+    const additionalImages =
+    Array.from(
+        additionalImagesContainer.querySelectorAll("input")
+    )
+    .map(input => input.value.trim())
+    .filter(image => image !== "");
 
-        name: document.getElementById("productName").value.trim(),
 
-        description: document.getElementById("productDescription").value.trim(),
+const productData = {
 
-        price: Number(document.getElementById("productPrice").value),
+    name: document.getElementById("productName").value.trim(),
 
-        stock: Number(document.getElementById("productStock").value),
+    description: document.getElementById("productDescription").value.trim(),
 
-        image: document.getElementById("productImage").value.trim(),
+    price: Number(document.getElementById("productPrice").value),
 
-        category_id: Number(document.getElementById("productCategory").value)
+    stock: Number(document.getElementById("productStock").value),
 
-    };
+    image: document.getElementById("productImage").value.trim(),
 
+    category_id: Number(document.getElementById("productCategory").value),
+
+    additionalImages
+
+};
 
     try {
 

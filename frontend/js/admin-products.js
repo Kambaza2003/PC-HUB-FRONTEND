@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:7000";
+const API_URL = "https://e-commerce-fypt.onrender.com";
 
 const token = localStorage.getItem("token");
 

@@ -10,139 +10,297 @@
     <link rel="stylesheet" href="css/output.css">
 </head>
 
-<body class="bg-slate-950 text-white min-h-screen">
+<body class="bg-slate-950 text-white min-h-screen pt-20">
 
     <!-- NAVBAR -->
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
 
-        <nav class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
 
-            <div class="justify-self-start">
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                id="mobileMenuButton"
+                type="button"
+                class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition text-2xl"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+
+            <!-- LOGO -->
+
+            <div class="flex items-center justify-center">
 
                 <a href="index.html">
 
-                    <img src="img/PC_HUB_logo.png" alt="PC HUB logo" class="w-32 h-auto">
+                    <img
+                        src="img/PC_HUB_logo.png"
+                        alt="PC HUB logo"
+                        class="w-32 h-auto">
 
                 </a>
 
             </div>
 
 
-            <div class="flex items-center justify-center gap-6">
+            <!-- DESKTOP NAVIGATION -->
 
-                <a href="index.html" class="hover:text-cyan-400 transition">
+            <div class="hidden md:flex items-center justify-center gap-6">
+
+                <a
+                    href="index.html"
+                    class="hover:text-cyan-400 transition">
+
                     Home
+
                 </a>
 
-                <a href="products.html" class="hover:text-cyan-400 transition">
+                <a
+                    href="products.html"
+                    class="hover:text-cyan-400 transition">
+
                     Products
+
                 </a>
 
-                <a href="about.html" class="hover:text-cyan-400 transition">
+                <a
+                    href="about.html"
+                    class="hover:text-cyan-400 transition">
+
                     About
+
                 </a>
 
-                <a href="contact.html" class="text-cyan-400 hover:text-cyan-200 transition">
+                <a
+                    href="contact.html"
+                    class="text-cyan-400 hover:text-cyan-200 transition">
+
                     Contact
+
                 </a>
 
             </div>
 
 
-            <div id="authLinks" class="flex items-center justify-end gap-5 pr-4">
+            <!-- DESKTOP AUTHENTICATION -->
+
+            <div
+                id="authLinks"
+                class="hidden md:flex items-center justify-end gap-5 pr-4">
+
             </div>
 
         </nav>
+
+
+        <!-- MOBILE MENU -->
+
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden bg-slate-950 border-t border-slate-800">
+
+            <div class="flex flex-col px-5 py-4 gap-1">
+
+                <!-- MAIN NAVIGATION -->
+
+                <a
+                    href="index.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    Home
+
+                </a>
+
+                <a
+                    href="products.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    Products
+
+                </a>
+
+                <a
+                    href="about.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    About
+
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="px-4 py-3 rounded-lg text-cyan-400 hover:bg-slate-900 transition">
+
+                    Contact
+
+                </a>
+
+            </div>
+
+
+            <!-- MOBILE AUTHENTICATION -->
+
+            <div
+                id="mobileAuthLinks"
+                class="flex flex-col px-5 pb-5 gap-1">
+
+            </div>
+
+        </div>
 
     </header>
 
 
     <!-- MAIN -->
 
-    <main class="pt-32 pb-16 px-6">
+    <main class="pt-12 pb-16 px-4 sm:px-6">
 
         <section class="max-w-5xl mx-auto">
 
+
             <!-- PAGE INTRO -->
 
-            <div class="text-center mb-12">
+            <div class="text-center mb-10 md:mb-12">
 
-                <p data-content-title="page-label" class="text-cyan-400 font-semibold uppercase tracking-wider mb-3">
+                <p
+                    data-content-title="page-label"
+                    class="text-cyan-400 font-semibold uppercase tracking-wider mb-3">
+
                     Contact PC HUB
+
                 </p>
 
-                <h1 data-content-title="page-title" class="text-4xl md:text-5xl font-bold mb-5">
+
+                <h1
+                    data-content-title="page-title"
+                    class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">
+
                     Get In Touch
+
                 </h1>
 
-                <p data-content-text="intro" class="text-slate-400 max-w-2xl mx-auto text-lg">
+
+                <p
+                    data-content-text="intro"
+                    class="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg">
+
                     Have a question about a product, your order or your shopping experience? Get in touch with us.
+
                 </p>
 
             </div>
 
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <!-- CONTACT CONTENT -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
 
                 <!-- CONTACT INFORMATION -->
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-8">
 
-                    <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+                    <h2
+                        class="text-xl sm:text-2xl font-semibold mb-6 text-cyan-400">
+
                         Contact Information
+
                     </h2>
 
 
                     <div class="space-y-6">
 
+
+                        <!-- EMAIL -->
+
                         <div>
 
-                            <p class="text-sm text-slate-500 mb-1">
+                            <p
+                                class="text-sm text-slate-500 mb-1">
+
                                 Email
+
                             </p>
 
-                            <p data-content-text="email" class="text-slate-300">
+                            <p
+                                data-content-text="email"
+                                class="text-slate-300 break-words">
+
                                 support@pchub.com
+
                             </p>
 
                         </div>
 
 
+                        <!-- PHONE -->
+
                         <div>
 
-                            <p class="text-sm text-slate-500 mb-1">
+                            <p
+                                class="text-sm text-slate-500 mb-1">
+
                                 Phone
+
                             </p>
 
-                            <p data-content-text="phone" class="text-slate-300">
+                            <p
+                                data-content-text="phone"
+                                class="text-slate-300">
+
                                 +234 906 691 1202
+
                             </p>
 
                         </div>
 
 
+                        <!-- ADDRESS -->
+
                         <div>
 
-                            <p class="text-sm text-slate-500 mb-1">
+                            <p
+                                class="text-sm text-slate-500 mb-1">
+
                                 Address
+
                             </p>
 
-                            <p data-content-text="address" class="text-slate-300">
+                            <p
+                                data-content-text="address"
+                                class="text-slate-300">
+
                                 PC HUB Technology Store
+
                             </p>
 
                         </div>
 
 
+                        <!-- WORKING HOURS -->
+
                         <div>
 
-                            <p class="text-sm text-slate-500 mb-1">
+                            <p
+                                class="text-sm text-slate-500 mb-1">
+
                                 Working Hours
+
                             </p>
 
-                            <p data-content-text="working-hours" class="text-slate-300">
-                                Monday - Saturday<br>9:00 AM - 6:00 PM
+                            <p
+                                data-content-text="working-hours"
+                                class="text-slate-300 leading-7">
+
+                                Monday - Saturday<br>
+                                9:00 AM - 6:00 PM
+
                             </p>
 
                         </div>
@@ -154,50 +312,97 @@
 
                 <!-- CONTACT FORM -->
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-8">
 
-                    <h2 class="text-2xl font-semibold mb-6 text-cyan-400">
+                    <h2
+                        class="text-xl sm:text-2xl font-semibold mb-6 text-cyan-400">
+
                         Send Us a Message
+
                     </h2>
 
 
                     <form class="space-y-5">
 
+
+                        <!-- NAME -->
+
                         <div>
 
-                            <label for="name" class="block text-sm text-slate-400 mb-2">
+                            <label
+                                for="name"
+                                class="block text-sm text-slate-400 mb-2">
+
                                 Name
+
                             </label>
 
-                            <input type="text" id="name" placeholder="Your name" class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none">
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Your name"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none">
+
 
                         </div>
 
 
+                        <!-- EMAIL -->
+
                         <div>
 
-                            <label for="email" class="block text-sm text-slate-400 mb-2">
+                            <label
+                                for="email"
+                                class="block text-sm text-slate-400 mb-2">
+
                                 Email
+
                             </label>
 
-                            <input type="email" id="email" placeholder="Your email" class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none">
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Your email"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none">
 
                         </div>
 
+
+                        <!-- MESSAGE -->
 
                         <div>
 
-                            <label for="message" class="block text-sm text-slate-400 mb-2">
+                            <label
+                                for="message"
+                                class="block text-sm text-slate-400 mb-2">
+
                                 Message
+
                             </label>
 
-                            <textarea id="message" rows="5" placeholder="Your message" class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 focus:border-cyan-400 focus:outline-none"></textarea>
+
+                            <textarea
+                                id="message"
+                                rows="5"
+                                placeholder="Your message"
+                                class="w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-y">
+
+                            </textarea>
 
                         </div>
 
 
-                        <button type="submit" class="w-full py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+                        <!-- SEND -->
+
+                        <button
+                            type="submit"
+                            class="w-full py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+
                             Send Message
+
                         </button>
 
                     </form>
@@ -211,13 +416,11 @@
     </main>
 
 
+    <!-- JAVASCRIPT FILES -->
+
     <script src="js/api.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/page-content.js"></script>
-
-    <script>
-        loadPageContent("contact");
-    </script>
 
 </body>
 

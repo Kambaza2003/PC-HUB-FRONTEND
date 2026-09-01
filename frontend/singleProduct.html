@@ -15,18 +15,30 @@
     <!-- NAVBAR -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
 
-        <nav class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between relative">
+
+            <!-- MOBILE MENU BUTTON -->
+            <button
+                id="mobileMenuButton"
+                type="button"
+                class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition text-2xl"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
 
             <!-- LOGO -->
-            <div class="justify-self-start">
+            <div class="flex items-center justify-center">
 
                 <a href="index.html">
 
                     <img
                         src="img/PC_HUB_logo.png"
                         alt="PC HUB logo"
-                        class="w-32 h-auto"
-                    >
+                        class="w-32 h-auto">
 
                 </a>
 
@@ -34,7 +46,7 @@
 
 
             <!-- NAVIGATION -->
-            <div class="flex items-center justify-center gap-6">
+            <div class="hidden md:flex items-center justify-center gap-6">
 
                 <a
                     href="index.html"
@@ -66,26 +78,65 @@
             <!-- AUTH -->
             <div
                 id="authLinks"
-                class="flex items-center justify-end gap-5 pr-4">
+                class="hidden md:flex items-center justify-end gap-5 pr-4">
             </div>
 
         </nav>
+
+
+        <!-- MOBILE MENU -->
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden bg-slate-950 border-t border-slate-800">
+
+            <div class="flex flex-col px-5 py-4 gap-1">
+
+                <a
+                    href="index.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+                    Home
+                </a>
+
+                <a
+                    href="products.html"
+                    class="px-4 py-3 rounded-lg text-cyan-400 hover:bg-slate-900 transition">
+                    Products
+                </a>
+
+                <a
+                    href="about.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+                    About
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div
+                id="mobileAuthLinks"
+                class="flex flex-col px-5 pb-5 gap-1">
+            </div>
+
+        </div>
 
     </header>
 
 
     <!-- MAIN -->
-    <main class="max-w-7xl mx-auto px-6 py-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
 
         <!-- BACK -->
-        <div class="mb-8">
+        <div class="mb-6 md:mb-8">
 
             <a
                 href="products.html"
-                class="inline-flex items-center gap-2
-                       text-slate-400
-                       hover:text-cyan-400
-                       transition">
+                class="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition">
 
                 <span>←</span>
 
@@ -106,7 +157,7 @@
         <!-- LOADING -->
         <div
             id="loadingMessage"
-            class="text-center py-20">
+            class="text-center py-16 md:py-20">
 
             <p class="text-slate-400 text-lg">
                 Loading product...
@@ -121,30 +172,21 @@
             class="hidden">
 
             <div
-                class="grid grid-cols-1
-                       lg:grid-cols-2
-                       gap-12
-                       items-start">
+                class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
 
 
-            <!-- PRODUCT IMAGE -->
+                <!-- PRODUCT IMAGE -->
                 <div>
 
                     <!-- MAIN IMAGE -->
                     <div
-                        class="bg-slate-900
-                            border border-slate-800
-                            rounded-2xl
-                            overflow-hidden
-                            h-[450px]
-                            flex items-center justify-center">
+                        class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden h-[300px] sm:h-[400px] lg:h-[450px] flex items-center justify-center">
 
                         <img
                             id="productImage"
                             src=""
                             alt=""
-                            class="w-full h-full object-contain p-8"
-                        >
+                            class="w-full h-full object-contain p-5 sm:p-8">
 
                     </div>
 
@@ -152,27 +194,21 @@
                     <!-- PRODUCT IMAGE VIEWS -->
                     <div
                         id="productImageGallery"
-                        class="mt-4
-                            flex
-                            gap-4
-                            flex-wrap">
+                        class="mt-4 flex gap-3 sm:gap-4 flex-wrap">
 
                     </div>
 
                 </div>
 
+
                 <!-- PRODUCT INFORMATION -->
-                <div>
+                <div class="min-w-0">
+
 
                     <!-- CATEGORY -->
                     <p
                         id="productCategory"
-                        class="text-cyan-400
-                               uppercase
-                               tracking-widest
-                               text-sm
-                               font-semibold
-                               mb-3">
+                        class="text-cyan-400 uppercase tracking-widest text-sm font-semibold mb-3">
 
                         PRODUCT
 
@@ -182,10 +218,7 @@
                     <!-- NAME -->
                     <h1
                         id="productName"
-                        class="text-4xl
-                               md:text-5xl
-                               font-bold
-                               mb-5">
+                        class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 break-words">
 
                     </h1>
 
@@ -193,10 +226,7 @@
                     <!-- PRICE -->
                     <p
                         id="productPrice"
-                        class="text-3xl
-                               font-bold
-                               text-cyan-400
-                               mb-6">
+                        class="text-2xl sm:text-3xl font-bold text-cyan-400 mb-6">
 
                     </p>
 
@@ -206,11 +236,7 @@
 
                         <span
                             id="productStock"
-                            class="inline-flex
-                                   px-4 py-2
-                                   rounded-full
-                                   text-sm
-                                   font-semibold">
+                            class="inline-flex px-4 py-2 rounded-full text-sm font-semibold">
 
                         </span>
 
@@ -221,9 +247,7 @@
                     <div class="mb-8">
 
                         <h2
-                            class="text-xl
-                                   font-semibold
-                                   mb-3">
+                            class="text-xl font-semibold mb-3">
 
                             Description
 
@@ -231,8 +255,7 @@
 
                         <p
                             id="productDescription"
-                            class="text-slate-400
-                                   leading-7">
+                            class="text-slate-400 leading-7">
 
                         </p>
 
@@ -243,25 +266,20 @@
                     <div class="mb-8">
 
                         <h2
-                            class="text-xl
-                                   font-semibold
-                                   mb-4">
+                            class="text-xl font-semibold mb-4">
 
                             Product Information
 
                         </h2>
 
-                        <div
-                            class="bg-slate-900
-                                   border border-slate-800
-                                   rounded-xl
-                                   divide-y
-                                   divide-slate-800">
 
+                        <div
+                            class="bg-slate-900 border border-slate-800 rounded-xl divide-y divide-slate-800">
+
+
+                            <!-- PRODUCT ID -->
                             <div
-                                class="flex justify-between
-                                       gap-6
-                                       px-5 py-4">
+                                class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-6 px-5 py-4">
 
                                 <span class="text-slate-400">
                                     Product ID
@@ -269,17 +287,16 @@
 
                                 <span
                                     id="productId"
-                                    class="font-medium">
+                                    class="font-medium break-all">
 
                                 </span>
 
                             </div>
 
 
+                            <!-- CATEGORY -->
                             <div
-                                class="flex justify-between
-                                       gap-6
-                                       px-5 py-4">
+                                class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-6 px-5 py-4">
 
                                 <span class="text-slate-400">
                                     Category
@@ -294,10 +311,9 @@
                             </div>
 
 
+                            <!-- AVAILABILITY -->
                             <div
-                                class="flex justify-between
-                                       gap-6
-                                       px-5 py-4">
+                                class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-6 px-5 py-4">
 
                                 <span class="text-slate-400">
                                     Availability
@@ -321,10 +337,7 @@
 
                         <label
                             for="quantity"
-                            class="block
-                                   text-slate-400
-                                   text-sm
-                                   mb-2">
+                            class="block text-slate-400 text-sm mb-2">
 
                             Quantity
 
@@ -336,12 +349,7 @@
                             <button
                                 id="decreaseQuantity"
                                 type="button"
-                                class="w-11 h-11
-                                       rounded-lg
-                                       bg-slate-800
-                                       border border-slate-700
-                                       hover:border-cyan-400
-                                       transition">
+                                class="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 hover:border-cyan-400 transition">
 
                                 −
 
@@ -353,25 +361,13 @@
                                 type="number"
                                 value="1"
                                 min="1"
-                                class="w-20 h-11
-                                       text-center
-                                       rounded-lg
-                                       bg-slate-800
-                                       border border-slate-700
-                                       focus:outline-none
-                                       focus:border-cyan-400"
-                            >
+                                class="w-20 h-11 text-center rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:border-cyan-400">
 
 
                             <button
                                 id="increaseQuantity"
                                 type="button"
-                                class="w-11 h-11
-                                       rounded-lg
-                                       bg-slate-800
-                                       border border-slate-700
-                                       hover:border-cyan-400
-                                       transition">
+                                class="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 hover:border-cyan-400 transition">
 
                                 +
 
@@ -386,17 +382,7 @@
                     <button
                         id="addToCartButton"
                         type="button"
-                        class="w-full
-                               py-4
-                               rounded-xl
-                               bg-cyan-500
-                               text-slate-950
-                               font-bold
-                               text-lg
-                               hover:bg-cyan-400
-                               transition
-                               disabled:opacity-50
-                               disabled:cursor-not-allowed">
+                        class="w-full py-4 rounded-xl bg-cyan-500 text-slate-950 font-bold text-lg hover:bg-cyan-400 transition disabled:opacity-50 disabled:cursor-not-allowed">
 
                         Add to Cart
 
@@ -408,17 +394,16 @@
 
         </section>
 
+
         <!-- RELATED PRODUCTS -->
         <section
             id="relatedProductsSection"
-            class="hidden mt-20">
+            class="hidden mt-16 md:mt-20">
 
-            <div class="mb-8">
+            <div class="mb-6 md:mb-8">
 
                 <h2
-                    class="text-3xl
-                        font-bold
-                        mb-2">
+                    class="text-2xl sm:text-3xl font-bold mb-2">
 
                     Related Products
 
@@ -435,10 +420,7 @@
 
             <div
                 id="relatedProductsContainer"
-                class="grid grid-cols-1
-                    sm:grid-cols-2
-                    lg:grid-cols-3
-                    gap-6">
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
 
             </div>
 
@@ -448,9 +430,9 @@
 
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-800 mt-16">
+    <footer class="border-t border-slate-800 mt-12 md:mt-16">
 
-        <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
 
             <p class="text-center text-slate-500">
 
@@ -463,6 +445,7 @@
     </footer>
 
 
+    <!-- JAVASCRIPT -->
     <script src="js/api.js"></script>
     <script src="js/singleProduct.js"></script>
     <script src="js/navbar.js"></script>

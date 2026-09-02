@@ -10,74 +10,193 @@
     <link rel="stylesheet" href="css/output.css">
 </head>
 
-<body class="bg-slate-950 text-white min-h-screen">
+<body class="bg-slate-950 text-white min-h-screen pt-12">
+
 
     <!-- NAVBAR -->
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
 
-        <nav class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
 
-            <div class="justify-self-start">
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                id="mobileMenuButton"
+                type="button"
+                class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition text-2xl"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+
+            <!-- LOGO -->
+
+            <div class="flex items-center justify-center">
 
                 <a href="index.html">
 
-                    <img src="img/PC_HUB_logo.png" alt="PC HUB logo" class="w-32 h-auto">
+                    <img
+                        src="img/PC_HUB_logo.png"
+                        alt="PC HUB logo"
+                        class="w-32 h-auto">
 
                 </a>
 
             </div>
 
 
-            <div class="flex items-center justify-center gap-6">
+            <!-- MAIN NAVIGATION -->
 
-                <a href="index.html" class="hover:text-cyan-400 transition">
+            <div class="hidden md:flex items-center justify-center gap-6">
+
+                <a
+                    href="index.html"
+                    class="hover:text-cyan-400 transition">
+
                     Home
+
                 </a>
 
-                <a href="products.html" class="hover:text-cyan-400 transition">
+                <a
+                    href="products.html"
+                    class="hover:text-cyan-400 transition">
+
                     Products
+
                 </a>
 
-                <a href="about.html" class="text-cyan-400 hover:text-cyan-200 transition">
+                <a
+                    href="about.html"
+                    class="text-cyan-400 hover:text-cyan-200 transition">
+
                     About
+
                 </a>
 
-                <a href="contact.html" class="hover:text-cyan-400 transition">
+                <a
+                    href="contact.html"
+                    class="hover:text-cyan-400 transition">
+
                     Contact
+
                 </a>
 
             </div>
 
 
-            <div id="authLinks" class="flex items-center justify-end gap-5 pr-4">
+            <!-- AUTHENTICATION NAVIGATION -->
+
+            <div
+                id="authLinks"
+                class="hidden md:flex items-center justify-end gap-5 pr-4">
+
             </div>
 
         </nav>
+
+
+        <!-- MOBILE MENU -->
+
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden bg-slate-950 border-t border-slate-800">
+
+
+            <!-- MOBILE NAVIGATION -->
+
+            <div class="flex flex-col px-5 py-4 gap-1">
+
+                <a
+                    href="index.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    Products
+
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="px-4 py-3 rounded-lg text-cyan-400 hover:bg-slate-900 transition">
+
+                    About
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-cyan-400 transition">
+
+                    Contact
+
+                </a>
+
+            </div>
+
+
+            <!-- MOBILE AUTHENTICATION -->
+
+            <div
+                id="mobileAuthLinks"
+                class="flex flex-col px-5 pb-5 gap-1">
+
+            </div>
+
+        </div>
 
     </header>
 
 
     <!-- MAIN -->
 
-    <main class="pt-32 pb-16 px-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-12">
 
         <section class="max-w-5xl mx-auto">
 
+
             <!-- PAGE INTRO -->
 
-            <div class="text-center mb-12">
+            <div class="text-center mb-10 md:mb-12">
 
-                <p data-content-title="page-label" class="text-cyan-400 font-semibold uppercase tracking-wider mb-3">
+                <p
+                    data-content-title="page-label"
+                    class="text-cyan-400 font-semibold uppercase tracking-wider mb-3">
+
                     About PC HUB
+
                 </p>
 
-                <h1 data-content-title="page-title" class="text-4xl md:text-5xl font-bold mb-5">
+
+                <h1
+                    data-content-title="page-title"
+                    class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">
+
                     Your Place for Better Technology
+
                 </h1>
 
-                <p data-content-text="intro" class="text-slate-400 max-w-2xl mx-auto text-lg">
+
+                <p
+                    data-content-text="intro"
+                    class="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-7">
+
                     PC HUB is an e-commerce platform designed to make buying computers, laptops and related technology products simple and convenient.
+
                 </p>
 
             </div>
@@ -85,18 +204,26 @@
 
             <!-- INFORMATION -->
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+
 
                 <!-- WHO WE ARE -->
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
 
-                    <h2 class="text-2xl font-semibold mb-4 text-cyan-400">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-cyan-400">
+
                         Who We Are
+
                     </h2>
 
-                    <p data-content-text="who-we-are" class="text-slate-400 leading-7">
+
+                    <p
+                        data-content-text="who-we-are"
+                        class="text-slate-400 leading-7">
+
                         PC HUB provides customers with access to a range of computer products through a simple online shopping experience. Our goal is to make it easy for customers to browse products, manage their cart, place orders and complete payments.
+
                     </p>
 
                 </div>
@@ -104,19 +231,29 @@
 
                 <!-- WHAT WE OFFER -->
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
 
-                    <h2 class="text-2xl font-semibold mb-4 text-cyan-400">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-cyan-400">
+
                         What We Offer
+
                     </h2>
 
-                    <ul data-content-text="what-we-offer" class="space-y-4 text-slate-400">
+
+                    <ul
+                        data-content-text="what-we-offer"
+                        class="space-y-4 text-slate-400">
 
                         <li>✓ Computer and laptop products</li>
+
                         <li>✓ Easy online shopping</li>
+
                         <li>✓ Secure user authentication</li>
+
                         <li>✓ Shopping cart management</li>
+
                         <li>✓ Order tracking</li>
+
                         <li>✓ Online payment processing</li>
 
                     </ul>
@@ -128,14 +265,21 @@
 
             <!-- MISSION -->
 
-            <div class="mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center">
+            <div class="mt-5 md:mt-8 bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center">
 
-                <h2 class="text-2xl font-semibold mb-4 text-cyan-400">
+                <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-cyan-400">
+
                     Our Mission
+
                 </h2>
 
-                <p data-content-text="mission" class="text-slate-400 max-w-3xl mx-auto leading-7">
+
+                <p
+                    data-content-text="mission"
+                    class="text-slate-400 max-w-3xl mx-auto leading-7">
+
                     Our mission is to provide a straightforward and enjoyable technology shopping experience where customers can find the products they need and manage their purchases with ease.
+
                 </p>
 
             </div>
@@ -145,12 +289,33 @@
     </main>
 
 
+    <!-- FOOTER -->
+
+    <footer class="border-t border-slate-800 mt-8 md:mt-16">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+            <p class="text-center text-slate-500">
+
+                © 2026 PC HUB. All rights reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
     <script src="js/api.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/page-content.js"></script>
 
     <script>
+
         loadPageContent("about");
+
     </script>
 
 </body>

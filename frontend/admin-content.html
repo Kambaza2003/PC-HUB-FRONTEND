@@ -16,13 +16,15 @@
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
 
-        <nav class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-3 items-center">
 
             <!-- HAMBURGER -->
 
             <div class="justify-self-start">
 
-                <button id="menuBtn" class="w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition text-2xl" aria-label="Open admin menu">
+                <button id="menuBtn"
+                    class="w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition text-2xl"
+                    aria-label="Open admin menu">
 
                     ☰
 
@@ -37,7 +39,9 @@
 
                 <a href="admin.html">
 
-                    <img src="img/PC_HUB_logo.png" alt="PC HUB logo" class="w-28 h-auto">
+                    <img src="img/PC_HUB_logo.png"
+                        alt="PC HUB logo"
+                        class="w-24 sm:w-28 h-auto">
 
                 </a>
 
@@ -48,7 +52,8 @@
 
             <div class="justify-self-end">
 
-                <a href="index.html" class="px-4 py-2 rounded-lg border border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-400 transition">
+                <a href="index.html"
+                    class="px-3 sm:px-4 py-2 rounded-lg border border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-400 transition text-sm sm:text-base">
 
                     View Site
 
@@ -100,8 +105,7 @@
 
             <!-- DASHBOARD -->
 
-            <a
-                href="admin.html"
+            <a href="admin.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>▣</span>
@@ -110,20 +114,22 @@
 
             </a>
 
+
             <!-- CATEGORIES -->
 
-            <a href="admin-categories.html" 
+            <a href="admin-categories.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>▦</span>
 
                 <span>Manage Categories</span>
+
             </a>
+
 
             <!-- PRODUCTS -->
 
-            <a
-                href="admin-products.html"
+            <a href="admin-products.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>▤</span>
@@ -135,8 +141,7 @@
 
             <!-- ORDERS -->
 
-            <a
-                href="admin-orders.html"
+            <a href="admin-orders.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>□</span>
@@ -148,8 +153,7 @@
 
             <!-- USERS -->
 
-            <a
-                href="admin-users.html"
+            <a href="admin-users.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>♙</span>
@@ -161,8 +165,7 @@
 
             <!-- PAYMENTS -->
 
-            <a
-                href="admin-payments.html"
+            <a href="admin-payments.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">
 
                 <span>₦</span>
@@ -174,8 +177,7 @@
 
             <!-- PAGE CONTENT -->
 
-            <a
-                href="admin-content.html"
+            <a href="admin-content.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg bg-cyan-500/10 text-cyan-400">
 
                 <span>✎</span>
@@ -187,17 +189,20 @@
         </div>
 
 
-
         <!-- MENU FOOTER -->
 
-        <div
-            class="mt-auto p-5 border-t border-slate-800">
+        <div class="mt-auto p-5 border-t border-slate-800">
+
+            <!-- ADMIN ACCOUNT -->
+
+            <div class="px-4 py-3 mb-2 text-sm text-cyan-400">
+                Kambaza <span class="text-red-400"> (admin)</span>
+            </div>
 
 
             <!-- VIEW WEBSITE -->
 
-            <a
-                href="index.html"
+            <a href="index.html"
                 class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition mb-2">
 
                 <span>↗</span>
@@ -209,8 +214,7 @@
 
             <!-- LOGOUT -->
 
-            <button
-                id="logoutBtn"
+            <button id="logoutBtn"
                 class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition text-left">
 
                 <span>↪</span>
@@ -226,17 +230,17 @@
 
     <!-- MAIN CONTENT -->
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 pb-16">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-16">
 
         <!-- PAGE HEADER -->
 
-        <div class="mb-10">
+        <div class="mb-8 md:mb-10">
 
             <p class="text-cyan-400 uppercase tracking-widest text-sm font-semibold mb-2">
                 ADMIN PANEL
             </p>
 
-            <h1 class="text-4xl font-bold">
+            <h1 class="text-3xl sm:text-4xl font-bold">
                 Page Content
             </h1>
 
@@ -249,12 +253,14 @@
 
         <!-- MESSAGE -->
 
-        <div id="contentMessage" class="hidden mb-6 rounded-lg p-4 border"></div>
+        <div id="contentMessage"
+            class="hidden mb-6 rounded-lg p-4 border">
+        </div>
 
 
         <!-- ADD CONTENT -->
 
-        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 mb-8">
 
             <div class="mb-6">
 
@@ -269,17 +275,25 @@
             </div>
 
 
-            <form id="contentForm" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <form id="contentForm"
+                class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                 <!-- PAGE -->
 
                 <div>
 
-                    <label for="page" class="block text-sm text-slate-400 mb-2">
+                    <label for="page"
+                        class="block text-sm text-slate-400 mb-2">
+
                         Page
+
                     </label>
 
-                    <input id="page" name="page" type="text" placeholder="home" class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
+                    <input id="page"
+                        name="page"
+                        type="text"
+                        placeholder="home"
+                        class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
 
                 </div>
 
@@ -288,11 +302,18 @@
 
                 <div>
 
-                    <label for="section" class="block text-sm text-slate-400 mb-2">
+                    <label for="section"
+                        class="block text-sm text-slate-400 mb-2">
+
                         Section
+
                     </label>
 
-                    <input id="section" name="section" type="text" placeholder="hero" class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
+                    <input id="section"
+                        name="section"
+                        type="text"
+                        placeholder="hero"
+                        class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
 
                 </div>
 
@@ -301,11 +322,18 @@
 
                 <div class="md:col-span-2">
 
-                    <label for="title" class="block text-sm text-slate-400 mb-2">
+                    <label for="title"
+                        class="block text-sm text-slate-400 mb-2">
+
                         Title
+
                     </label>
 
-                    <input id="title" name="title" type="text" placeholder="Welcome to PC HUB" class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
+                    <input id="title"
+                        name="title"
+                        type="text"
+                        placeholder="Welcome to PC HUB"
+                        class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400">
 
                 </div>
 
@@ -314,11 +342,18 @@
 
                 <div class="md:col-span-2">
 
-                    <label for="content" class="block text-sm text-slate-400 mb-2">
+                    <label for="content"
+                        class="block text-sm text-slate-400 mb-2">
+
                         Content
+
                     </label>
 
-                    <textarea id="content" name="content" rows="6" placeholder="Enter the content displayed on the website..." class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 resize-y"></textarea>
+                    <textarea id="content"
+                        name="content"
+                        rows="6"
+                        placeholder="Enter the content displayed on the website..."
+                        class="w-full rounded-lg bg-slate-950 border border-slate-700 px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-400 resize-y"></textarea>
 
                 </div>
 
@@ -327,7 +362,9 @@
 
                 <div class="md:col-span-2 flex justify-end">
 
-                    <button id="saveContentBtn" type="submit" class="px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
+                    <button id="saveContentBtn"
+                        type="submit"
+                        class="w-full sm:w-auto px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition">
 
                         Add Content
 
@@ -344,7 +381,7 @@
 
         <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
 
-            <div class="px-6 py-5 border-b border-slate-800">
+            <div class="px-5 sm:px-6 py-5 border-b border-slate-800">
 
                 <h2 class="text-xl font-semibold">
                     Existing Content
@@ -359,7 +396,8 @@
 
             <!-- LOADING -->
 
-            <div id="loadingMessage" class="px-6 py-10 text-center text-slate-500">
+            <div id="loadingMessage"
+                class="px-5 sm:px-6 py-10 text-center text-slate-500">
 
                 Loading content...
 
@@ -368,7 +406,8 @@
 
             <!-- EMPTY -->
 
-            <div id="emptyMessage" class="hidden px-6 py-10 text-center text-slate-500">
+            <div id="emptyMessage"
+                class="hidden px-5 sm:px-6 py-10 text-center text-slate-500">
 
                 No page content found.
 
@@ -377,39 +416,40 @@
 
             <!-- TABLE -->
 
-            <div id="tableContainer" class="hidden overflow-x-auto">
+            <div id="tableContainer"
+                class="hidden overflow-x-auto">
 
-                <table class="w-full text-left">
+                <table class="w-full min-w-[1000px] text-left">
 
                     <thead class="bg-slate-800 text-slate-300">
 
                         <tr>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 ID
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Page
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Section
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Title
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Content
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Updated
                             </th>
 
-                            <th class="px-6 py-4">
+                            <th class="px-4 sm:px-6 py-4">
                                 Action
                             </th>
 
@@ -418,7 +458,9 @@
                     </thead>
 
 
-                    <tbody id="contentTableBody" class="divide-y divide-slate-800"></tbody>
+                    <tbody id="contentTableBody"
+                        class="divide-y divide-slate-800">
+                    </tbody>
 
                 </table>
 
@@ -431,7 +473,9 @@
 
     <!-- OVERLAY -->
 
-    <div id="menuOverlay" class="fixed inset-0 z-50 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="menuOverlay"
+        class="fixed inset-0 z-50 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
 
 
     <!-- SCRIPTS -->

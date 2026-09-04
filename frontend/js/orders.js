@@ -260,7 +260,7 @@ const displayOrders = (orders) => {
                                    md:text-2xl
                                    font-semibold
                                    text-white
-                                   break-words">
+                                   wrap-break-word">
 
                             ${order.name}
 
@@ -288,7 +288,7 @@ const displayOrders = (orders) => {
                     <!-- TOTAL -->
 
                     <div class="md:text-right
-                                md:min-w-[200px]">
+                                md:min-w-50">
 
                         <p class="text-xs
                                   uppercase
@@ -367,7 +367,7 @@ const displayOrders = (orders) => {
                         href="orderDetails.html?id=${order.id}"
                         class="w-full
                                sm:w-auto
-                               min-w-[150px]
+                               min-w-37.5
                                px-6
                                py-3
                                rounded-lg
@@ -395,7 +395,7 @@ const displayOrders = (orders) => {
                                 href="payment.html?orderId=${order.id}"
                                 class="w-full
                                        sm:w-auto
-                                       min-w-[150px]
+                                       min-w-37.5
                                        px-6
                                        py-3
                                        rounded-lg
@@ -424,7 +424,7 @@ const displayOrders = (orders) => {
                                 class="cancel-order-btn
                                        w-full
                                        sm:w-auto
-                                       min-w-[150px]
+                                       min-w-37.5
                                        px-6
                                        py-3
                                        rounded-lg

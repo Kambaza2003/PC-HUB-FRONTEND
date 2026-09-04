@@ -131,7 +131,7 @@ const displayOrderDetails = (order) => {
                                     <img
                                         src="${order.image}"
                                         alt="${order.name}"
-                                        class="w-full h-full object-cover"
+                                        class="w-full h-full object-contain"
                                     >
                                 `
                                 : `

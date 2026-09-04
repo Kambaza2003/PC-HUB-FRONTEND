@@ -88,9 +88,9 @@ const displayOrderDetails = (order) => {
     orderDetailsContainer.innerHTML = `
         <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
 
-            <!-- Header -->
-            <div class="p-6 sm:p-8 border-b border-slate-800">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <!-- Order Header -->
+            <div class="p-5 sm:p-8 border-b border-slate-800">
+                <div class="flex items-center justify-between gap-4">
 
                     <div>
                         <p class="text-sm text-slate-500 mb-1">
@@ -102,7 +102,9 @@ const displayOrderDetails = (order) => {
                         </h2>
                     </div>
 
-                    <span class="self-start sm:self-auto px-4 py-2 rounded-full text-sm font-medium ${getStatusClasses(order.status)}">
+                    <span
+                        class="px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap ${getStatusClasses(order.status)}"
+                    >
                         ${order.status}
                     </span>
 
@@ -110,63 +112,97 @@ const displayOrderDetails = (order) => {
             </div>
 
 
-            <!-- Product Information -->
-            <div class="p-6 sm:p-8">
+            <!-- Product -->
+            <div class="p-5 sm:p-8">
 
-                <p class="text-sm text-slate-500 uppercase tracking-wider mb-4">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-5">
                     Product
                 </p>
 
-                <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-5">
 
-                    <h3 class="text-xl font-semibold mb-4">
-                        ${order.name}
-                    </h3>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <!-- Product Image -->
+                    <div class="w-full h-64 sm:h-72 bg-slate-800 flex items-center justify-center">
 
-                        <div>
-                            <p class="text-slate-500 mb-1">
-                                Unit Price
-                            </p>
+                        ${
+                            order.image
+                                ? `
+                                    <img
+                                        src="${order.image}"
+                                        alt="${order.name}"
+                                        class="w-full h-full object-cover"
+                                    >
+                                `
+                                : `
+                                    <span class="text-slate-500">
+                                        No Image
+                                    </span>
+                                `
+                        }
 
-                            <p class="text-slate-200 font-medium">
-                                ₦${Number(order.price).toLocaleString()}
-                            </p>
-                        </div>
+                    </div>
 
-                        <div>
-                            <p class="text-slate-500 mb-1">
-                                Quantity
-                            </p>
 
-                            <p class="text-slate-200 font-medium">
-                                ${order.quantity}
-                            </p>
+                    <!-- Product Information -->
+                    <div class="p-5 sm:p-6">
+
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white mb-6">
+                            ${order.name}
+                        </h3>
+
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                            <div>
+                                <p class="text-sm text-slate-500 mb-1">
+                                    Unit Price
+                                </p>
+
+                                <p class="text-lg text-slate-200 font-medium">
+                                    ₦${Number(order.price).toLocaleString()}
+                                </p>
+                            </div>
+
+
+                            <div>
+                                <p class="text-sm text-slate-500 mb-1">
+                                    Quantity
+                                </p>
+
+                                <p class="text-lg text-slate-200 font-medium">
+                                    ${order.quantity}
+                                </p>
+                            </div>
+
                         </div>
 
                     </div>
+
                 </div>
 
 
                 <!-- Order Summary -->
                 <div class="mt-8 pt-6 border-t border-slate-800">
 
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-4">
+
                         <span class="text-slate-400">
                             Order Total
                         </span>
 
-                        <span class="text-2xl font-bold text-cyan-400">
+                        <span class="text-xl sm:text-2xl font-bold text-cyan-400">
                             ₦${subtotal.toLocaleString()}
                         </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- Date -->
+                <!-- Order Date -->
                 <div class="mt-6">
+
                     <p class="text-sm text-slate-500 mb-1">
                         Order Date
                     </p>
@@ -174,6 +210,7 @@ const displayOrderDetails = (order) => {
                     <p class="text-slate-300">
                         ${new Date(order.created_at).toLocaleString()}
                     </p>
+
                 </div>
 
             </div>
@@ -186,7 +223,7 @@ const displayOrderDetails = (order) => {
 
                     <a
                         href="orders.html"
-                        class="flex-1 px-6 py-3 rounded-lg border border-slate-700 text-slate-200 font-semibold hover:bg-slate-800 transition text-center"
+                        class="w-full sm:flex-1 px-6 py-3 rounded-lg border border-slate-700 text-slate-200 font-semibold hover:bg-slate-800 transition text-center"
                     >
                         Back to Orders
                     </a>
@@ -196,7 +233,7 @@ const displayOrderDetails = (order) => {
                             ? `
                                 <a
                                     href="payment.html?orderId=${order.id}"
-                                    class="flex-1 px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition text-center"
+                                    class="w-full sm:flex-1 px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition text-center"
                                 >
                                     Pay Now
                                 </a>

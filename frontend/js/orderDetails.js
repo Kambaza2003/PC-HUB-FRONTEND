@@ -112,47 +112,49 @@ const displayOrderDetails = (order) => {
             </div>
 
 
-            <!-- Product -->
+           <!-- Product -->
             <div class="p-5 sm:p-8">
 
                 <p class="text-sm text-slate-500 uppercase tracking-wider mb-5">
                     Product
                 </p>
 
+                <!-- Product Area -->
+                <div class="w-full sm:w-2/3 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
 
-                <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
+                    <!-- Image Parent -->
+                    <div class="p-4 sm:p-6 bg-slate-950 flex justify-center">
 
-                    <!-- Product Image -->
-                    <div class="w-full h-64 sm:h-72 bg-slate-800 flex items-center justify-center">
+                        <div class="w-full max-w-md h-72 sm:h-80 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center overflow-hidden">
 
-                        ${
-                            order.image
-                                ? `
-                                    <img
-                                        src="${order.image}"
-                                        alt="${order.name}"
-                                        class="w-full h-full object-contain"
-                                    >
-                                `
-                                : `
-                                    <span class="text-slate-500">
-                                        No Image
-                                    </span>
-                                `
-                        }
+                            ${
+                                order.image
+                                    ? `
+                                        <img
+                                            src="${order.image}"
+                                            alt="${order.name}"
+                                            class="max-w-full max-h-full object-contain"
+                                        >
+                                    `
+                                    : `
+                                        <span class="text-slate-500">
+                                            No Image
+                                        </span>
+                                    `
+                            }
+
+                        </div>
 
                     </div>
 
+                    <!-- Details Child -->
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
 
-                    <!-- Product Information -->
-                    <div class="p-5 sm:p-6">
-
-                        <h3 class="text-xl sm:text-2xl font-semibold text-white mb-6">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">
                             ${order.name}
                         </h3>
 
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="grid grid-cols-2 gap-4">
 
                             <div>
                                 <p class="text-sm text-slate-500 mb-1">
@@ -163,7 +165,6 @@ const displayOrderDetails = (order) => {
                                     ₦${Number(order.price).toLocaleString()}
                                 </p>
                             </div>
-
 
                             <div>
                                 <p class="text-sm text-slate-500 mb-1">

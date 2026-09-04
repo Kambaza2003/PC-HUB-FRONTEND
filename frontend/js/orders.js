@@ -170,51 +170,170 @@ const displayOrders = (orders) => {
         orderElement.className =
             "bg-slate-900 " +
             "border border-slate-800 " +
-            "rounded-2xl p-6";
+            "rounded-2xl " +
+            "overflow-hidden " +
+            "shadow-lg";
 
 
         orderElement.innerHTML = `
 
-            <div class="flex flex-col
-                        md:flex-row
-                        md:items-center
-                        md:justify-between
-                        gap-5">
+            <!-- HEADER -->
 
-                <!-- ORDER INFORMATION -->
+            <div class="px-6 py-5
+                        flex flex-col
+                        sm:flex-row
+                        sm:items-center
+                        sm:justify-between
+                        gap-3
+                        border-b
+                        border-slate-800">
 
                 <div>
 
                     <p class="text-sm
                               text-slate-500
-                              mb-2">
+                              mb-1">
 
-                        Order #${order.id}
+                        Order
 
                     </p>
 
+                    <p class="text-lg
+                              font-semibold
+                              text-white">
 
-                    <h2 class="text-xl
-                               font-semibold
-                               mb-2">
+                        #${order.id}
 
-                        ${order.name}
+                    </p>
 
-                    </h2>
+                </div>
 
 
-                    <p class="text-slate-400">
+                <!-- STATUS -->
 
-                        ₦${Number(order.price).toLocaleString()}
-                        ×
-                        ${order.quantity}
+                <span class="self-start
+                             sm:self-auto
+                             px-4
+                             py-1.5
+                             rounded-full
+                             text-sm
+                             font-medium
+                             ${getStatusClasses(
+                                 order.status
+                             )}">
+
+                    ${order.status}
+
+                </span>
+
+            </div>
+
+
+            <!-- ORDER INFORMATION -->
+
+            <div class="px-6 py-6">
+
+
+                <div class="flex flex-col
+                            md:flex-row
+                            md:items-center
+                            md:justify-between
+                            gap-6">
+
+
+                    <!-- PRODUCT -->
+
+                    <div class="min-w-0">
+
+                        <p class="text-xs
+                                  uppercase
+                                  tracking-widest
+                                  text-slate-500
+                                  mb-2">
+
+                            Product
+
+                        </p>
+
+
+                        <h2 class="text-xl
+                                   md:text-2xl
+                                   font-semibold
+                                   text-white
+                                   break-words">
+
+                            ${order.name}
+
+                        </h2>
+
+
+                        <p class="text-slate-400
+                                  mt-3">
+
+                            ₦${Number(
+                                order.price
+                            ).toLocaleString()}
+
+                            <span class="mx-2">
+                                ×
+                            </span>
+
+                            ${order.quantity}
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- TOTAL -->
+
+                    <div class="md:text-right
+                                md:min-w-[200px]">
+
+                        <p class="text-xs
+                                  uppercase
+                                  tracking-widest
+                                  text-slate-500
+                                  mb-2">
+
+                            Total
+
+                        </p>
+
+
+                        <p class="text-2xl
+                                  font-bold
+                                  text-cyan-400">
+
+                            ₦${subtotal.toLocaleString()}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="mt-6
+                            pt-5
+                            border-t
+                            border-slate-800">
+
+                    <p class="text-xs
+                              uppercase
+                              tracking-widest
+                              text-slate-500
+                              mb-1">
+
+                        Ordered on
 
                     </p>
 
 
                     <p class="text-sm
-                              text-slate-500
-                              mt-2">
+                              text-slate-300">
 
                         ${new Date(
                             order.created_at
@@ -224,38 +343,47 @@ const displayOrders = (orders) => {
 
                 </div>
 
+            </div>
 
-                <!-- ORDER STATUS / TOTAL -->
+
+            <!-- ACTION FOOTER -->
+
+            <div class="px-6
+                        py-5
+                        bg-slate-950/40
+                        border-t
+                        border-slate-800">
+
 
                 <div class="flex flex-col
-                            md:items-end
+                            sm:flex-row
+                            sm:justify-end
                             gap-3">
 
 
-                    <!-- STATUS -->
+                    <!-- VIEW DETAILS -->
 
-                    <span class="inline-block
-                                 px-3 py-1
-                                 rounded-full
-                                 text-sm
-                                 ${getStatusClasses(
-                                     order.status
-                                 )}">
+                    <a
+                        href="orderDetails.html?id=${order.id}"
+                        class="w-full
+                               sm:w-auto
+                               min-w-[150px]
+                               px-6
+                               py-3
+                               rounded-lg
+                               bg-slate-800
+                               border
+                               border-slate-700
+                               text-slate-200
+                               font-semibold
+                               text-center
+                               hover:bg-slate-700
+                               hover:border-slate-600
+                               transition">
 
-                        ${order.status}
+                        View Details
 
-                    </span>
-
-
-                    <!-- TOTAL -->
-
-                    <span class="text-xl
-                                 font-bold
-                                 text-cyan-400">
-
-                        ₦${subtotal.toLocaleString()}
-
-                    </span>
+                    </a>
 
 
                     <!-- PAY NOW -->
@@ -265,18 +393,54 @@ const displayOrders = (orders) => {
                         ? `
                             <a
                                 href="payment.html?orderId=${order.id}"
-                                class="px-5 py-2
+                                class="w-full
+                                       sm:w-auto
+                                       min-w-[150px]
+                                       px-6
+                                       py-3
                                        rounded-lg
                                        bg-cyan-500
                                        text-slate-950
                                        font-semibold
+                                       text-center
                                        hover:bg-cyan-400
-                                       transition
-                                       text-center">
+                                       transition">
 
                                 Pay Now
 
                             </a>
+                          `
+                        : ""
+                    }
+
+
+                    <!-- CANCEL ORDER -->
+
+                    ${
+                        order.status === "pending"
+                        ? `
+                            <button
+                                type="button"
+                                class="cancel-order-btn
+                                       w-full
+                                       sm:w-auto
+                                       min-w-[150px]
+                                       px-6
+                                       py-3
+                                       rounded-lg
+                                       bg-transparent
+                                       text-red-400
+                                       border
+                                       border-red-500/40
+                                       font-semibold
+                                       hover:bg-red-500/10
+                                       hover:border-red-500/60
+                                       transition"
+                                data-order-id="${order.id}">
+
+                                Cancel Order
+
+                            </button>
                           `
                         : ""
                     }
@@ -291,7 +455,103 @@ const displayOrders = (orders) => {
         ordersContainer.appendChild(orderElement);
 
     });
-};
 
+
+    /*
+     * CANCEL ORDER BUTTONS
+     */
+
+    const cancelButtons =
+        document.querySelectorAll(
+            ".cancel-order-btn"
+        );
+
+
+    cancelButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            async () => {
+
+                const orderId =
+                    button.dataset.orderId;
+
+
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to cancel this order?"
+                    );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                button.disabled = true;
+
+                button.textContent =
+                    "Cancelling...";
+
+
+                try {
+
+                    const {
+                        response,
+                        data
+                    } = await apiRequest(
+                        `/orders/${orderId}/cancel`,
+                        {
+                            method: "PUT"
+                        }
+                    );
+
+
+                    if (!response.ok) {
+
+                        showMessage(
+                            data.message ||
+                            "Unable to cancel order."
+                        );
+
+                        button.disabled = false;
+
+                        button.textContent =
+                            "Cancel Order";
+
+                        return;
+                    }
+
+
+                    showMessage(
+                        "Order cancelled successfully.",
+                        "success"
+                    );
+
+
+                    await loadOrders();
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    showMessage(
+                        "Unable to connect to the server."
+                    );
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        "Cancel Order";
+
+                }
+
+            }
+        );
+
+    });
+
+};
 
 loadOrders();
